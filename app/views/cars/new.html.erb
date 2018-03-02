@@ -1,0 +1,7 @@
+<h1>New Car</h1>
+
+<%if current_user.admin_role? or current_user.superadmin_role?%>
+    <%= render 'form', car: @car %>
+<%end%>
+
+<%= link_to 'Back', cars_path %>

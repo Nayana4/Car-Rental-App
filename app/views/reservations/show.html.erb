@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered">
+  <p>
+    <tr>
+      <td><strong>License no:</strong></td>
+      <td><%= @reservation.license_no %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Email:</strong></td>
+      <td><%= @reservation.email %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Start time:</strong></td>
+      <td><%= @reservation.start_time  %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>End time:</strong></td>
+      <td><%= @reservation.end_time %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Status:</strong></td>
+      <td><%= @reservation.status %></td>
+    </tr>
+  </p>
+</table>
+|
+<%= link_to 'Back', reservations_path %>
+

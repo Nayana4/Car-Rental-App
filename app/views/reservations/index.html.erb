@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Current Reservations</h1>
+<h1><%= link_to 'view cars', cars_path if current_user.superadmin_role? %></h1>
+<h1><%= link_to 'view cars', cars_path if current_user.admin_role? %></h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>License no</th>
+      <th>Email</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Checkout time</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+        
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <%reservation.update_reservations%>
+      <%if reservation.status == "Returned" or reservation.status == "Cancelled"%>
+        <%next%>
+      <%end%>
+      <tr>
+        <td><%= reservation.license_no %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.start_time %></td>
+        <td><%= reservation.end_time %></td>
+        <td><%= reservation.checkout_time %></td>
+        <td><%= reservation.status %></td>
+        <td><%= link_to 'Show', reservation %></td>
+        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+
+        <%if reservation.status == "Reserved"%>
+            <td><%= link_to 'Checkout', reservation_url(:id => reservation.id, :car_id => reservation.car_id, :status => reservation.status), method: :delete if current_user.customer_role  %></td>
+        <%else%>
+            <td><%= link_to 'Return Car', reservation_url(:id => reservation.id, :car_id => reservation.car_id, :status => reservation.status), method: :delete, data: { confirm: 'Are you sure?' } if current_user.customer_role  %></td>
+        <%end%>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Reservation History</h1>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>License no</th>
+    <th>Email</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Checkout time</th>
+    <th>Status</th>
+    <th colspan="3"></th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |reservation| %>
+      <%reservation.update_reservations%>
+      <%if reservation.status == "Reserved" or reservation.status == "Checked Out"%>
+          <%next%>
+      <%end%>
+      <tr>
+        <td><%= reservation.license_no %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.start_time %></td>
+        <td><%= reservation.end_time %></td>
+        <td><%= reservation.checkout_time %></td>
+        <td><%= reservation.status %></td>
+        <td><%= link_to 'Show', reservation %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<br><br>
+<%= link_to 'Edit my profile',  edit_user_registration_path %>
+<br><br>
+<%= link_to 'View cars',  cars_url %>
+
+
+
+
+
+
+

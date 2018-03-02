@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<table class="table table-bordered">
+  <p>
+    <tr>
+      <td><strong>Model:</strong></td>
+      <td><%= @car.model %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>License no:</strong></td>
+      <td><%= @car.license_no %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Style:</strong></td>
+      <td><%= @car.style  %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Location:</strong></td>
+      <td><%= @car.location %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Manufacturer:</strong></td>
+      <td><%= @car.manufacturer %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Status:</strong></td>
+      <td><%= @car.status %></td>
+    </tr>
+  </p>
+  <p>
+    <tr>
+      <td><strong>Hourly rate:</strong></td>
+      <td><%= @car.hourly_rate %></td>
+    </tr>
+  </p>
+</table>
+<%= link_to 'Back', cars_path %>
